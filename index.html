@@ -3,78 +3,234 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Portofolio — M.Fathan Ghani Hidayat</title>
-    <meta name="description" content="Portofolio modern" />
+    <title>Portofolio — M. Fathan Ghani Hidayat</title>
+    <meta
+      name="description"
+      content="Portofolio modern & interaktif M. Fathan Ghani Hidayat. Lihat proyek-proyek web development dan desain UI/UX terbaru."
+    />
+    <meta name="author" content="M. Fathan Ghani Hidayat" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
-   <style>
-  body {
-    background-color: #f8fafc;
-    background-image: linear-gradient(#e6eef6 1px, transparent 1px),
-      linear-gradient(90deg, #e6eef6 1px, transparent 1px);
-    background-size: 14px 14px;
-    margin: 0;
-    padding: 0;
-  }
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
-  html, body {
-    overflow-x: hidden;
-  }
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --secondary: #8b5cf6;
+        --muted: #6b7280;
+        --background-1: #f8fafc;
+        --background-2: #ffffff;
+        --text-color: #0f172a;
+      }
+      /* Styling untuk tombol "Kembali ke Atas" */
+      #btn-back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        transition: opacity 0.3s ease-in-out;
+        display: none;
+      }
+      /* Styling untuk link media sosial dan email di footer */
+      .social-link {
+        color: var(--primary);
+        transition: color 0.3s ease;
+      }
+      .social-link:hover {
+        color: var(--secondary); /* Warna berubah saat di-hover */
+      }
+      .social-link svg {
+        transition: transform 0.2s ease;
+      }
+      .social-link:hover svg {
+        transform: scale(1.1); /* Efek perbesaran saat di-hover */
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(
+          180deg,
+          var(--background-1) 0%,
+          var(--background-2) 100%
+        );
+        color: var(--text-color);
+        -webkit-font-smoothing: antialiased;
+      }
 
-  .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
-  }
+      .text-primary {
+        color: var(--primary) !important;
+      }
+      .btn-primary {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+      .btn-primary:hover {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        transform: translateY(-2px);
+      }
+      .btn-outline-primary {
+        color: var(--primary);
+        border-color: var(--primary);
+        transition: all 0.3s ease;
+      }
+      .btn-outline-primary:hover {
+        background-color: var(--primary);
+        color: white;
+      }
 
-  @keyframes floaty {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-6px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  .floaty {
-    animation: floaty 6s ease-in-out infinite;
-  }
-   .gallery-img {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .gallery-img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
-</style>
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+      }
 
+      .hero-section {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: 6rem 0;
+      }
+
+      .hero-image {
+        max-width: 420px;
+        border-radius: 18px;
+        box-shadow: 0 16px 32px rgba(15, 23, 42, 0.1);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+      .hero-image:hover {
+        transform: scale(1.03) rotate(-0.5deg);
+        box-shadow: 0 24px 48px rgba(15, 23, 42, 0.15);
+      }
+
+      .typed-cursor {
+        opacity: 1;
+        animation: blink 0.7s infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .project-card-img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+      }
+      .project-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        cursor: pointer;
+      }
+      .gallery-item img {
+        display: block;
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+      .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: flex-end;
+        padding: 1rem;
+        background: linear-gradient(
+          180deg,
+          transparent 40%,
+          rgba(2, 6, 23, 0.6) 100%
+        );
+        color: white;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+      .modal-content {
+        border-radius: 12px;
+      }
+      .modal-backdrop.show {
+        opacity: 0.5;
+      }
+
+      .skill-badge {
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+
+      footer {
+        background: var(--background-2);
+        border-top: 1px solid #e6eef6;
+      }
+
+      @media (max-width: 767px) {
+        .hero-section {
+          min-height: unset;
+          padding: 4rem 0;
+        }
+        .hero-image {
+          max-width: 280px;
+        }
+        .project-card-img {
+          height: 160px;
+        }
+        .gallery-item img {
+          height: 180px;
+        }
+      }
+    </style>
   </head>
-  <body class="text-dark">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm glass sticky-top">
+  <body>
+    <nav class="navbar navbar-expand-lg glass sticky-top py-3">
       <div class="container">
-        <a class="navbar-brand fw-bold text-primary " href="#"
-          >Portofolio<span class="" style="margin-left: 5px"
-
-          ></a
-        >
+        <a class="navbar-brand fw-bold fs-4" href="#">
+          <span class="text-primary">Fathan</span
+          ><span class="text-muted">Ghani</span>
+        </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
+          data-bs-target="#navMain"
+          aria-controls="navMain"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <div class="collapse navbar-collapse" id="navMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
               <a class="nav-link" href="#about">Tentang</a>
             </li>
@@ -82,340 +238,681 @@
               <a class="nav-link" href="#projects">Proyek</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#contact">Kontak</a>
+              <a class="nav-link" href="#gallery">Galeri</a>
+            </li>
+            <li class="nav-item mt-3 mt-lg-0">
+              <a class="btn btn-sm btn-outline-primary ms-lg-3" href="#contact"
+                >Hubungi</a
+              >
             </li>
           </ul>
-        </div>a
+        </div>
       </div>
     </nav>
 
-<div class="container" style="min-height: 100vh;">
-  <div class="row align-items-center h-100 ms-5">
-    
-    <!-- Kolom teks -->
-    <div class="col-md-6 ms-md-5 mt-5">
-      <h1 class="display-4 fw-bold">
-        Halo, saya <span class="text-primary">Fathan Ghani</span>
-      </h1>
-    <p class="fs-5 mt-3">
-  Saya seorang siswa SMK yang tertarik pada dunia teknologi, khususnya di bidang
-  web development, desain, dan UI/UX. Saat ini saya terus belajar dan mengembangkan
-  kemampuan dalam membuat website yang modern, bersih, cepat, dan responsif.
-  Dengan semangat belajar, saya berusaha membangun pengalaman digital yang tidak hanya
-  fungsional, tetapi juga menyenangkan untuk digunakan.
-</p>
+    <header class="hero-section">
+      <div class="container">
+        <div
+          class="row align-items-center justify-content-center text-center text-md-start"
+        >
+          <div class="col-md-6 mb-5 mb-md-0" data-aos="fade-up">
+            <h1 class="display-4 fw-bold">
+              Halo, saya <span class="text-primary">Fathan</span>
+            </h1>
+            <p class="fs-5 mt-3">
+              Saya membuat website modern, desain antarmuka, dan solusi UI/UX.
+              Saya suka membuat produk yang rapi, cepat, dan mudah digunakan.
+            </p>
+            <div
+              class="d-flex gap-3 justify-content-center justify-content-md-start"
+            >
+              <a href="#projects" class="btn btn-primary btn-lg"
+                >Lihat Proyek</a
+              >
+              <a href="#contact" class="btn btn-outline-primary btn-lg"
+                >Hubungi Saya</a
+              >
+            </div>
+            <p class="mt-3 text-muted fs-6">
+              <span id="typed-output"></span>
+            </p>
+          </div>
 
-      <a href="#projects" class="btn btn-primary btn-lg mt-4">Lihat Proyek</a>
-    </div>
+          <div class="col-md-5 text-center" data-aos="fade-left">
+            <img
+              src="gambar/IMG-20250625-WA0009.jpg"
+              alt="Foto M. Fathan Ghani Hidayat"
+              class="img-fluid rounded shadow-lg hero-image"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <!-- Kolom foto -->
-    <div class="col-md-5 text-center mt-5 ms-5">
-      <img src="gambar/IMG-20250625-WA0009.jpg" 
-           alt="Foto Fathan" 
-           class="img-fluid rounded shadow"
-           style="max-width: 350px; height: auto;">
-    </div>
+    <main>
+      <section id="about" class="py-5 bg-white">
+        <div class="container" data-aos="fade-up">
+          <div class="row align-items-center g-5">
+            <div class="col-md-6">
+              <h2 class="fw-bold">Tentang Saya</h2>
+              <p class="text-muted lead">
+                Saya siswa SMK yang fokus belajar **web development** dan
+                **UI/UX**. Aktif membuat proyek-proyek kecil untuk latihan, baik
+                frontend maupun sedikit backend. Selalu cari tantangan baru dan
+                suka nyelesain masalah dengan code.
+              </p>
+              <ul class="list-unstyled mt-4">
+                <li class="mb-2"><strong>Lokasi:</strong> Indonesia</li>
+                <li class="mb-2"><strong>Tempat belajar:</strong> SMK</li>
+                <li>
+                  <strong>Email:</strong> Fathanghani.itxpro@gmail.com
+                </li>
+              </ul>
+              <a href="#contact" class="btn btn-primary mt-3">Hire me</a>
+            </div>
 
-  </div>
-</div>
+            <div class="col-md-6" data-aos="fade-left">
+              <h5 class="mb-3 fw-bold">Skill</h5>
+              <div class="d-flex flex-wrap gap-2 mb-4">
+                <span class="skill-badge">HTML5</span>
+                <span class="skill-badge">CSS3</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">Bootstrap 5</span>
+                <span class="skill-badge">Tailwind CSS</span>
+                <span class="skill-badge">Laravel</span>
+                <span class="skill-badge">Git</span>
+              </div>
 
+              <div class="mt-4">
+                <h6 class="mb-2 fw-bold text-muted">Tool favorit</h6>
+                <div class="d-flex gap-2 flex-wrap">
+                  <div class="p-2 bg-light border rounded">VS Code</div>
+                  <div class="p-2 bg-light border rounded">Figma</div>
+                  <div class="p-2 bg-light border rounded">Chrome DevTools</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      ---
 
+      <section id="projects" class="py-5">
+        <div class="container" data-aos="fade-up">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold">Proyek Terbaru</h2>
+            <a href="#gallery" class="text-decoration-none text-muted"
+              >Lihat Semua →</a
+            >
+          </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-5 bg-light">
-      <div class="container ">
-        <h2 class="fw-bold text-center mb-5 fs-1">Proyek Terbaru</h2>
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card h-100 shadow project-card">
+                <img
+                  src="gambar/Screenshot_16-9-2025_214734_127.0.0.1.jpeg"
+                  class="project-card-img card-img-top"
+                  alt="Bherindo Motor"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title fw-bold">Bherindo Motor</h5>
+                  <p class="card-text text-muted">
+                    Website untuk menjual motor & mobil. Terdiri dari katalog
+                    dan page detail produk.
+                  </p>
+                  <div class="mt-auto d-flex gap-2">
+                    <a
+                      href="isibaherindo.html"
+                      class="btn btn-primary w-100"
+                      >Lihat File</a
+                    >
+                    <button
+                      class="btn btn-outline-primary w-100"
+                      data-bs-toggle="modal"
+                      data-bs-target="#projectModal"
+                      data-project='{"title":"Bherindo Motor","img":"gambar/Screenshot_16-9-2025_214734_127.0.0.1.jpeg","desc":"Website untuk menjual motor & mobil. Dibangun responsive dengan katalog dan halaman detail produk.","features":["Halaman katalog","Detail produk","Kontak pemesanan"]}'
+                    >
+                      Lihat Detail
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card h-100 shadow project-card">
+                <img
+                  src="gambar/Screenshot 2025-09-10 064810.png"
+                  class="project-card-img card-img-top"
+                  alt="Manajemen Inventaris"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title fw-bold">Manajemen Inventaris</h5>
+                  <p class="card-text text-muted">
+                    Sistem sederhana untuk mengelola stok dan barang pada usaha
+                    kecil.
+                  </p>
+                  <div class="mt-auto d-flex gap-2">
+                    <a
+                      href="manajemen-inventaris.html"
+                      class="btn btn-primary w-100"
+                      >Lihat File</a
+                    >
+                    <button
+                      class="btn btn-outline-primary w-100"
+                      data-bs-toggle="modal"
+                      data-bs-target="#projectModal"
+                      data-project='{"title":"Manajemen Inventaris","img":"gambar/Screenshot 2025-09-10 064810.png","desc":"Sistem sederhana untuk mengelola stok dan barang pada usaha kecil.","features":["CRUD barang","Upload gambar","Laporan stok"]}'
+                    >
+                      Lihat Detail
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card h-100 shadow project-card">
+                <img
+                  src="gambar/Screenshot 2025-09-14 210352.png"
+                  class="project-card-img card-img-top"
+                  alt="Manajemen Inventaris v2"
+                />
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title fw-bold">Manajemen Inventaris v2</h5>
+                  <p class="card-text text-muted">
+                    Versi perbaikan dengan UI lebih baik dan fitur pencarian.
+                  </p>
+                  <div class="mt-auto d-flex gap-2">
+                    <a
+                      href="manajemen-inventaris-v2.html"
+                      class="btn btn-primary w-100"
+                      >Lihat File</a
+                    >
+                    <button
+                      class="btn btn-outline-primary w-100"
+                      data-bs-toggle="modal"
+                      data-bs-target="#projectModal"
+                      data-project='{"title":"Manajemen Inventaris v2","img":"gambar/Screenshot 2025-09-14 210352.png","desc":"Versi perbaikan dengan UI lebih baik dan fitur pencarian.","features":["Pencarian cepat","Perbaikan UI","Optimasi mobile"]}'
+                    >
+                      Lihat Detail
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      ---
+
+      <section id="gallery" class="py-5 bg-white">
+        <div class="container" data-aos="fade-up">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold">Galeri Proyek</h2>
+            <div class="text-muted">Klik gambar untuk melihat lebih besar</div>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-6 col-md-4 col-lg-3">
+              <div
+                class="gallery-item"
+                data-bs-toggle="modal"
+                data-bs-target="#imageModal"
+                data-img-src="gambar/Screenshot 2025-09-09 222456.png"
+              >
+                <img
+                  src="gambar/Screenshot 2025-09-09 222456.png"
+                  alt="Bherindo — Homepage"
+                />
+                <div class="gallery-overlay">
+                  <strong>Bherindo — Homepage</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+              <div
+                class="gallery-item"
+                data-bs-toggle="modal"
+                data-bs-target="#imageModal"
+                data-img-src="gambar/Screenshot 2025-09-09 220455.png"
+              >
+                <img
+                  src="gambar/Screenshot 2025-09-09 220455.png"
+                  alt="Inventaris — Dashboard"
+                />
+                <div class="gallery-overlay">
+                  <strong>Inventaris — Dashboard</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+              <div
+                class="gallery-item"
+                data-bs-toggle="modal"
+                data-bs-target="#imageModal"
+                data-img-src="gambar/Screenshot 2025-09-09 210858.png"
+              >
+                <img
+                  src="gambar/Screenshot 2025-09-09 210858.png"
+                  alt="Inventaris — Detail Barang"
+                />
+                <div class="gallery-overlay">
+                  <strong>Inventaris — Detail Barang</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+              <div
+                class="gallery-item"
+                data-bs-toggle="modal"
+                data-bs-target="#imageModal"
+                data-img-src="gambar/image.png"
+              >
+                <img src="gambar/image.png" alt="Misc Design" />
+                <div class="gallery-overlay"><strong>Misc Design</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      ---
+
+      <section id="contact" class="py-5">
+        <div class="container" data-aos="fade-up">
+          <div class="row g-5">
+            <div class="col-md-6">
+              <h2 class="fw-bold">Hubungi Saya</h2>
+              <p class="text-muted lead">
+                Kalau mau pesan jasa template website atau kerja bareng, tinggal
+                hubungi lewat WhatsApp atau email.
+              </p>
+              <div class="mt-4 d-flex flex-column gap-2">
+                <a
+                  href="https://wa.me/6281234567890"
+                  target="_blank"
+                  class="btn btn-success"
+                  >Chat di WhatsApp</a
+                >
+                <a
+                  href="mailto:fathan@example.com"
+                  class="btn btn-outline-primary"
+                  >Kirim Email</a
+                >
+              </div>
+              <small class="text-muted d-block mt-3"
+                >Nomor & email di atas contoh. Ganti dengan data asli sebelum
+                dipublikasikan.</small
+              >
+            </div>
+
+            <div class="col-md-6">
+              <form class="bg-white p-4 rounded shadow">
+                <div class="mb-3">
+                  <label for="contactName" class="form-label">Nama</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="contactName"
+                    placeholder="Nama kamu"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="contactMessage" class="form-label">Pesan</label>
+                  <textarea
+                    class="form-control"
+                    id="contactMessage"
+                    rows="4"
+                    placeholder="Halo, saya tertarik..."
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">
+                  Kirim
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-light pt-5 pb-4 border-top">
+      <div class="container">
         <div class="row g-4">
           <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
-              <img
-                src="gambar/Screenshot 2025-09-10 063517.png"
-                class="card-img-top"
-                alt="Proyek 1"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Bherindo motor</h5>
-                <p class="card-text">
-                  Website ini saya buat untuk menjual motor/mobil
-                </p>
-                <a
-                  href="isibaherindo.html"
-                  class="btn btn-primary mt-6 d-flex justify-content-center"
-                >
-                  pergi lihat lebih spesifik
-                </a>
-              </div>
-            </div>
+            <a class="fw-bold fs-5 text-decoration-none" href="#">
+              <span class="text-primary">Fathan</span
+              ><span class="text-muted">Ghani</span>
+            </a>
+            <p class="mt-2 text-muted">
+              Seorang front-end developer yang fokus membuat website modern dan
+              interaktif.
+            </p>
           </div>
-
           <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
-              <img
-                src="gambar/Screenshot 2025-09-10 064810.png"
-                class="card-img-top"
-                alt="Proyek 3"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Manajemen Inventaris</h5>
-                <p class="card-text">website ini untuk me manage barang</p>
-                <a
-                  href="#"
-                  class="btn btn-primary mt-6 d-flex justify-content-center"
-                  >pergi lihat lebih spesifik</a
+            <h6 class="fw-bold text-dark">Tautan Cepat</h6>
+            <ul class="list-unstyled text-muted">
+              <li>
+                <a href="#projects" class="text-decoration-none text-muted"
+                  >Proyek</a
                 >
-              </div>
-            </div>
+              </li>
+              <li>
+                <a href="#gallery" class="text-decoration-none text-muted"
+                  >Galeri</a
+                >
+              </li>
+              <li>
+                <a href="#contact" class="text-decoration-none text-muted"
+                  >Hubungi</a
+                >
+              </li>
+            </ul>
           </div>
-           <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
-              <img
-                src="gambar/Screenshot 2025-09-14 210352.png"
-                class="card-img-top"
-                alt="Proyek 3"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Manajemen Inventaris</h5>
-                <p class="card-text">website ini untuk me manage barang</p>
-                <a
-                  href="#"
-                  class="btn btn-primary mt-6 d-flex justify-content-center"
-                  >pergi lihat lebih spesifik</a
+          <div class="col-md-4">
+            <h6 class="fw-bold text-dark">Ikuti Saya</h6>
+            <div class="d-flex gap-3 mb-3">
+              <a
+                href="https://instagram.com/fathan"
+                target="_blank"
+                class="social-link"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-instagram"
                 >
-              </div>
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                </svg>
+              </a>
+              <a
+                href="https://linkedin.com/in/fathan"
+                target="_blank"
+                class="social-link"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-linkedin"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  ></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a
+                href="https://github.com/fathan"
+                target="_blank"
+                class="social-link"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  view-box="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-github"
+                >
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.5a6.66 6.66 0 0 0-6 0c-2.73-1.85-3.91-.5-3.91-.5A5.07 5.07 0 0 0 4 4.77 5.44 5.44 0 0 0 3.5 14c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 18.94 19"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://tiktok.com/@fathan"
+                target="_blank"
+                class="social-link"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather"
+                >
+                  <path
+                    d="M16 0.1c-1.3-0.1-2.6 0.1-3.9 0.6c-1.4 0.5-2.6 1.2-3.8 2.2c-1.1 1-2.1 2.2-2.9 3.5c-0.8 1.3-1.4 2.7-1.8 4.2c-0.4 1.5-0.5 3-0.2 4.5c0.3 1.5 1 2.9 2.1 4.2c1.1 1.3 2.4 2.4 3.9 3.2c1.5 0.8 3.1 1.3 4.8 1.4c1.7 0.1 3.4-0.1 5.1-0.6c1.7-0.5 3.3-1.4 4.8-2.5c0.1-0.1 0.1-0.2 0.2-0.3c0.1-0.1 0.1-0.2 0.1-0.3s0-0.2-0.1-0.3c-0.1-0.1-0.1-0.2-0.2-0.3c-0.1-0.1-0.3-0.2-0.5-0.2c-0.2-0.1-0.4-0.1-0.6-0.1c-0.2 0-0.4 0-0.6 0.1c-1.2 0.4-2.5 0.6-3.8 0.5c-1.3-0.1-2.6-0.6-3.8-1.4c-1.2-0.8-2.2-1.8-3-3c-0.8-1.2-1.3-2.6-1.5-4c-0.2-1.4-0.1-2.8 0.4-4.2c0.4-1.4 1-2.8 2-4c0.9-1.2 2-2.3 3.3-3.1c1.2-0.8 2.7-1.3 4.1-1.4c1.5-0.1 2.9-0.1 4.3 0.2c1.4 0.3 2.8 0.9 4.1 1.8c0.1 0.1 0.2 0.2 0.3 0.3c0.1 0.1 0.2 0.2 0.2 0.4c0 0.1-0.1 0.3-0.2 0.4c-0.1 0.1-0.2 0.2-0.3 0.3c-0.1 0.1-0.3 0.1-0.5 0.1c-0.2 0-0.4 0-0.6-0.1c-1.4-0.4-2.8-0.6-4.2-0.5c-1.4 0.1-2.8 0.6-4.1 1.4c-1.3 0.8-2.4 1.8-3.4 3c-0.9 1.1-1.5 2.5-1.7 3.9c-0.2 1.4-0.1 2.8 0.4 4.2c0.4 1.3 1 2.7 2.1 3.9c1 1.2 2.3 2.2 3.8 2.9c1.4 0.7 3 1.1 4.6 1.1c1.6 0 3.2-0.3 4.7-1c1.5-0.7 2.9-1.6 4.1-2.8c-0.1-0.1-0.2-0.2-0.2-0.3c-0.1-0.1-0.1-0.2-0.1-0.4c-0.1-0.1-0.2-0.2-0.3-0.3c-0.1-0.1-0.2-0.1-0.4-0.1c-0.1 0-0.3 0-0.4 0.1c-1.2 0.3-2.5 0.4-3.8 0.2c-1.3-0.2-2.6-0.7-3.8-1.5c-1.2-0.8-2.2-1.8-3-3c-0.8-1.2-1.3-2.6-1.5-4c-0.2-1.4-0.1-2.8 0.4-4.2c0.4 1.3 1 2.7 2.1 3.9c1 1.2 2.3 2.2 3.8 2.9c1.4 0.7 3 1.1 4.6 1.1c1.6 0 3.2-0.3 4.7-1c1.5-0.7 2.9-1.6 4.1-2.8"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-mail text-primary me-2"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a
+                href="mailto:Fathanghani.itxpro@gmail.com"
+                class="social-link text-muted text-decoration-none"
+                >Fathanghani.itxpro@gmail.com</a
+              >
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <div class="container py-5">
-    <h2 class="text-center mb-4 fw-bold fs-1">Galeri Proyek Saya</h2>
-    <p class="text-center text-muted mb-5">
-      Beberapa hasil desain & website yang sudah saya kerjakan selama belajar di SMK
-    </p>
-
-    <div class="row g-4">
-      <!-- Gambar 1 -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <img src="gambar/Screenshot 2025-09-09 222456.png" class="img-fluid rounded gallery-img h-auto w-auto" data-bs-toggle="modal" data-bs-target="#galleryModal" alt="gallery 1">
-      </div>
-      <!-- Gambar 2 -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <img src="gambar/Screenshot 2025-09-09 220455.png" class="img-fluid rounded gallery-img h-auto w-auto" data-bs-toggle="modal" data-bs-target="#galleryModal" alt="gallery 2">
-      </div>
-      <!-- Gambar 3 -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <img src="gambar/Screenshot 2025-09-09 210858.png" class="img-fluid rounded gallery-img h-auto w-auto" data-bs-toggle="modal" data-bs-target="#galleryModal" alt="gallery 3">
-      </div>
-      <!-- Gambar 4 -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <img src="gambar/image.png" class="img-fluid rounded gallery-img h-auto w-auto " data-bs-toggle="modal" data-bs-target="#galleryModal" alt="gallery 4">
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Preview -->
-  <div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content bg-transparent border-0">
-        <img id="modalImage" src="" class="img-fluid rounded shadow" alt="preview">
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const galleryImages = document.querySelectorAll(".gallery-img");
-    const modalImage = document.getElementById("modalImage");
-
-    galleryImages.forEach(img => {
-      img.addEventListener("click", () => {
-        modalImage.src = img.src;
-      });
-    });
-  </script>
-
-    <footer class="bg-white dark:bg-gray-900 mt-4">
-      <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div class="md:flex md:justify-between">
-          <div class="mb-6 md:mb-0 fs-3">
-            <a class="navbar-brand fw-bold" href="#"
-              >Muhammad Fathan<span
-                class="text-primary"
-                style="margin-left: 5px"
-                >Ghani Hidayat</span
-              ></a
-            >
-          </div>
-          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-            <div>
-              <h2
-                class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
-              >
-                Resources
-              </h2>
-              <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                <li class="mb-4">
-                  <a href="https://flowbite.com/" class="hover:underline"
-                    >Flowbite</a
-                  >
-                </li>
-                <li>
-                  <a href="https://tailwindcss.com/" class="hover:underline"
-                    >Tailwind CSS</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2
-                class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
-              >
-                Follow us
-              </h2>
-              <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                <li class="mb-4">
-                  <a
-                    href="https://github.com/themesberg/flowbite"
-                    class="hover:underline"
-                    >Github</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://discord.gg/4eeurUVvTy"
-                    class="hover:underline"
-                    >Discord</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2
-                class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
-              >
-                Legal
-              </h2>
-              <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                <li class="mb-4">
-                  <a href="#" class="hover:underline">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#" class="hover:underline">Terms &amp; Conditions</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <hr
-          class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
-        />
-        <div class="sm:flex sm:items-center sm:justify-between">
-          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
-            >© 2023
-            <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a
-            >. All Rights Reserved.
-          </span>
-          <div class="flex mt-4 sm:justify-center sm:mt-0">
-            <a
-              href="#"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-            >
-              <svg
-                class="w-4 h-4"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 8 19"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span class="sr-only">Facebook page</span>
-            </a>
-            <a
-              href="#"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-            >
-              <svg
-                class="w-4 h-4"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 21 16"
-              >
-                <path
-                  d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"
-                />
-              </svg>
-              <span class="sr-only">Discord community</span>
-            </a>
-            <a
-              href="#"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-            >
-              <svg
-                class="w-4 h-4"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 17"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span class="sr-only">Twitter page</span>
-            </a>
-            <a
-              href="#"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-            >
-              <svg
-                class="w-4 h-4"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span class="sr-only">GitHub account</span>
-            </a>
-            <a
-              href="#"
-              class="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-            >
-              <svg
-                class="w-4 h-4"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span class="sr-only">Dribbble account</span>
-            </a>
-          </div>
+        <hr class="my-4" />
+        <div class="text-center small text-muted">
+          <p class="mb-0">
+            &copy; 2025 M. Fathan Ghani Hidayat — All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
 
+    <a
+      href="#top"
+      id="btn-back-to-top"
+      class="btn btn-primary btn-sm rounded-circle shadow-lg"
+      style="opacity: 0"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-arrow-up"
+      >
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    </a>
+
+    <div
+      class="modal fade"
+      id="projectModal"
+      tabindex="-1"
+      aria-labelledby="projectModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="row g-0">
+              <div class="col-md-6">
+                <img
+                  id="modalProjectImg"
+                  src=""
+                  alt="project"
+                  class="img-fluid"
+                  style="height: 100%; object-fit: cover; width: 100%"
+                />
+              </div>
+              <div class="col-md-6 p-4">
+                <h4 id="modalProjectTitle" class="fw-bold"></h4>
+                <p id="modalProjectDesc" class="text-muted"></p>
+                <h6>Fitur</h6>
+                <ul id="modalProjectFeatures" class="list-unstyled"></ul>
+                <div class="mt-3">
+                  <a href="#" class="btn btn-primary">Lihat Live</a>
+                  <button
+                    class="btn btn-outline-secondary ms-2"
+                    data-bs-dismiss="modal"
+                  >
+                    Tutup
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="imageModal"
+      tab-index="-1"
+      aria-labelledby="imageModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-transparent border-0">
+          <div class="modal-body p-0 text-center">
+            <img
+              id="imageModalImg"
+              src=""
+              class="img-fluid rounded shadow-lg"
+              alt="preview"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      // Inisialisasi AOS
+      AOS.init({ duration: 800, once: true });
+
+      // Inisialisasi Typed.js
+      document.addEventListener("DOMContentLoaded", () => {
+        const typedElement = document.getElementById("typed-output");
+        if (typedElement) {
+          new Typed(typedElement, {
+            strings: [
+              "Front-end developer. ",
+              "UI/UX enthusiast. ",
+              "Selalu belajar setiap hari.",
+            ],
+            typeSpeed: 40,
+            backSpeed: 25,
+            backDelay: 1400,
+            loop: true,
+          });
+        }
+      });
+
+      // Mengisi modal proyek saat dibuka
+      const projectModal = document.getElementById("projectModal");
+      if (projectModal) {
+        projectModal.addEventListener("show.bs.modal", function (event) {
+          const button = event.relatedTarget;
+          const data = JSON.parse(button.getAttribute("data-project"));
+          document.getElementById("modalProjectTitle").textContent = data.title;
+          document.getElementById("modalProjectDesc").textContent = data.desc;
+          document.getElementById("modalProjectImg").src = data.img;
+          const featuresList = document.getElementById("modalProjectFeatures");
+          featuresList.innerHTML = "";
+          data.features.forEach((f) => {
+            const li = document.createElement("li");
+            li.textContent = `• ${f}`;
+            featuresList.appendChild(li);
+          });
+        });
+      }
+
+      // Mengisi modal gambar galeri saat dibuka
+      const imageModal = document.getElementById("imageModal");
+      if (imageModal) {
+        imageModal.addEventListener("show.bs.modal", function (event) {
+          const button = event.relatedTarget;
+          const imgUrl = button.getAttribute("data-img-src");
+          document.getElementById("imageModalImg").src = imgUrl;
+        });
+      }
+
+      // Menampilkan/menyembunyikan tombol Kembali ke Atas dengan efek fade
+      const backToTopBtn = document.getElementById("btn-back-to-top");
+      const scrollThreshold = 100;
+
+      const handleScroll = () => {
+        if (
+          document.body.scrollTop > scrollThreshold ||
+          document.documentElement.scrollTop > scrollThreshold
+        ) {
+          backToTopBtn.style.display = "block";
+          setTimeout(() => {
+            backToTopBtn.style.opacity = "1";
+          }, 10);
+        } else {
+          backToTopBtn.style.opacity = "0";
+          setTimeout(() => {
+            backToTopBtn.style.display = "none";
+          }, 300);
+        }
+      };
+
+      window.onscroll = handleScroll;
+
+      backToTopBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
   </body>
 </html>

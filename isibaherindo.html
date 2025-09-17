@@ -3,46 +3,146 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bherindo Motor — Detail Proyek</title>
+    <title>Panduan Penggunaan — Bherindo Motor</title>
+    <meta
+      name="description"
+      content="Panduan langkah-langkah untuk menggunakan website Bherindo Motor."
+    />
+    <meta name="author" content="M. Fathan Ghani Hidayat" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+
     <style>
-      body {
-        background-color: #f8fafc;
-        background-image: linear-gradient(#e6eef6 1px, transparent 1px),
-          linear-gradient(90deg, #e6eef6 1px, transparent 1px);
-        background-size: 14px 14px;
+      :root {
+        --primary: #4f46e5;
+        --secondary: #8b5cf6;
+        --muted: #6b7280;
+        --background-1: #f8fafc;
+        --background-2: #ffffff;
+        --text-color: #0f172a;
       }
+      #btn-back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        transition: opacity 0.3s ease-in-out;
+        display: none;
+      }
+      .social-link {
+        color: var(--primary);
+        transition: color 0.3s ease;
+      }
+      .social-link:hover {
+        color: var(--secondary);
+      }
+      .social-link svg {
+        transition: transform 0.2s ease;
+      }
+      .social-link:hover svg {
+        transform: scale(1.1);
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(
+          180deg,
+          var(--background-1) 0%,
+          var(--background-2) 100%
+        );
+        color: var(--text-color);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .text-primary {
+        color: var(--primary) !important;
+      }
+      .btn-primary {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+      .btn-primary:hover {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        transform: translateY(-2px);
+      }
+      .btn-outline-primary {
+        color: var(--primary);
+        border-color: var(--primary);
+        transition: all 0.3s ease;
+      }
+      .btn-outline-primary:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
       .glass {
         background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+      }
+
+      .step-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e2e8f0;
+      }
+      .step-icon {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary);
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        border-radius: 50%;
+        margin-bottom: 1.5rem;
+      }
+      .step-number {
+        font-size: 1.5rem;
+        color: var(--primary);
+        font-weight: bold;
       }
     </style>
   </head>
-  <body class="text-dark">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm glass sticky-top">
+  <body>
+    <nav class="navbar navbar-expand-lg glass sticky-top py-3">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html"
-          >Muhammad Fathan<span class="text-primary ms-1"
-            >Ghani Hidayat</span
-          ></a
-        >
+        <a class="navbar-brand fw-bold fs-4" href="index.html">
+          <span class="text-primary">Fathan</span
+          ><span class="text-muted">Ghani</span>
+        </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
+          data-bs-target="#navMain"
+          aria-controls="navMain"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse" id="navMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
             <li class="nav-item">
               <a class="nav-link" href="index.html#about">Tentang</a>
             </li>
@@ -50,106 +150,335 @@
               <a class="nav-link" href="index.html#projects">Proyek</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html#contact">Kontak</a>
+              <a class="nav-link" href="index.html#gallery">Galeri</a>
+            </li>
+            <li class="nav-item mt-3 mt-lg-0">
+              <a
+                class="btn btn-sm btn-outline-primary ms-lg-3"
+                href="index.html#contact"
+                >Hubungi</a
+              >
             </li>
           </ul>
         </div>
       </div>
     </nav>
-     <p class="lead text-center mt-5">
-  Website ini dibuat khusus untuk mempermudah proses <span class="fw-semibold">jual</span> 
-  dan <span class="fw-semibold">beli</span> kendaraan seperti 
-  <span class="fw-semibold">motor</span> dan <span class="fw-semibold">mobil</span>. 
-  Pengguna dapat dengan mudah mencari kendaraan sesuai kebutuhan, melihat detail spesifikasi, 
-  membandingkan harga, hingga menghubungi penjual langsung. 
-  Dengan tampilan yang <span class="fw-semibold">modern</span>, 
-  <span class="fw-semibold">responsif</span>, dan <span class="fw-semibold">user-friendly</span>, 
-  website ini dirancang agar nyaman digunakan baik di smartphone maupun komputer.
-</p>
 
+    <main>
+      <section class="py-5">
+        <div class="container" data-aos="fade-up">
+          <div class="text-center mb-5">
+            <a href="index.html" class="btn btn-primary mb-3"
+              >← Kembali ke Halaman Utama</a
+            >
+          
+          </div>
 
-    <!-- Konten Utama -->
-    <section class="container py-5">
-      <div class="row align-items-center">
-        <!-- Gambar di kiri -->
-        <div class="col-md-5 mb-4 mb-md-0">
-          <img
-            src="gambar/Screenshot 2025-09-10 063517.png"
-            alt="Bherindo Motor"
-            class="img-fluid rounded shadow"
-          />
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-8 col-lg-6">
+              <div class="step-card" data-aos="fade-right">
+                <div class="step-icon">1</div>
+                <h4 class="fw-bold">Halaman Dashboard</h4>
+                <p class="text-muted">
+                 di dashboard kalian bisa melihat produk motor dan mobil untuk dan kalian bisa memebeli barang tersebut dengan cara me whatsapp penjualnya
+                </p>
+                <img
+                  src="gambar/Screenshot_16-9-2025_214734_127.0.0.1.jpeg"
+                  alt="Halaman Katalog"
+                  class="img-fluid rounded shadow-sm mt-3"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-8 col-lg-6">
+              <div class="step-card" data-aos="fade-left">
+                <div class="step-icon">2</div>
+                <h4 class="fw-bold">Telusuri Detail Produk</h4>
+                <p class="text-muted">
+                 di halaman form untuk admin meinput data yang isi nya nama produk,stok,harga dan lain lain
+                </p>
+                <img
+                  src="gambar/Screenshot 2025-09-14 222921.png"
+                  alt="Halaman Detail Produk"
+                  class="img-fluid rounded shadow-sm mt-3"
+                />
+              </div>
+            </div>
+             <div class="col-md-8 col-lg-6">
+              <div class="step-card" data-aos="fade-left">
+                <div class="step-icon">3</div>
+                <h4 class="fw-bold">Telusuri Detail Produk</h4>
+                <p class="text-muted">
+                fungsi edit dan hapus itu untuk admin merubah data yang telah di input 
+                </p>
+                <img
+                  src="gambar/Screenshot_17-9-2025_7475_127.0.0.1.jpeg"
+                  alt="Halaman Detail Produk"
+                  class="img-fluid rounded shadow-sm mt-3"
+                />
+              </div>
+            </div>
+             <div class="col-md-8 col-lg-6">
+              <div class="step-card" data-aos="fade-left">
+                <div class="step-icon">4</div>
+                <h4 class="fw-bold">Telusuri Detail Produk</h4>
+                <p class="text-muted">
+               di about us ada visi misi baherindo motor dalam penjualan nya dan ada hasil pengerjaan
+                </p>
+                <img
+                  src="gambar/Screenshot_16-9-2025_214240_127.0.0.1.jpeg"
+                  alt="Halaman Detail Produk"
+                  class="img-fluid rounded shadow-sm mt-3"
+                />
+              </div>
+            </div>
+<!-- 
+            <div class="col-md-8 col-lg-6">
+              <div class="step-card" data-aos="fade-right">
+                <div class="step-icon">3</div>
+                <h4 class="fw-bold">Hubungi Kami untuk Pemesanan</h4>
+                <p class="text-muted">
+                  Setelah menemukan produk yang tepat, kamu bisa langsung
+                  menghubungi tim penjualan kami. Di halaman detail produk, klik
+                  tombol **'Hubungi Penjual'** atau **'Pesan via WhatsApp'**
+                  untuk terhubung secara instan.
+                </p>
+                <img
+                  src="gambar/whatsapp-button.png"
+                  alt="Tombol WhatsApp"
+                  class="img-fluid rounded shadow-sm mt-3"
+                />
+              </div>
+            </div> -->
+          </div>
         </div>
-        <!-- Deskripsi di kanan -->
-        <div class="col-md-7">
-        
-          <p class="fs-5">
-          Di bagian dashboard disini saya menyediakan beberapa fungsi seperti membeli dengan langsung menghubungi ke whatapp penjual 
+      </section>
+    </main>
+
+    <footer class="bg-light pt-5 pb-4 border-top">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <a class="fw-bold fs-5 text-decoration-none" href="index.html">
+              <span class="text-primary">Fathan</span
+              ><span class="text-muted">Ghani</span>
+            </a>
+            <p class="mt-2 text-muted">
+              Seorang front-end developer yang fokus membuat website modern dan
+              interaktif.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h6 class="fw-bold text-dark">Tautan Cepat</h6>
+            <ul class="list-unstyled text-muted">
+              <li>
+                <a
+                  href="index.html#projects"
+                  class="text-decoration-none text-muted"
+                  >Proyek</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#gallery"
+                  class="text-decoration-none text-muted"
+                  >Galeri</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#contact"
+                  class="text-decoration-none text-muted"
+                  >Hubungi</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h6 class="fw-bold text-dark">Ikuti Saya</h6>
+            <div class="d-flex gap-3 mb-3">
+              <a
+                href="https://instagram.com/fathan"
+                target="_blank"
+                class="social-link"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-instagram"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                </svg>
+              </a>
+              <a
+                href="https://linkedin.com/in/fathan"
+                target="_blank"
+                class="social-link"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-linkedin"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  ></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+              <a
+                href="https://github.com/fathan"
+                target="_blank"
+                class="social-link"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  view-box="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-github"
+                >
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.5a6.66 6.66 0 0 0-6 0c-2.73-1.85-3.91-.5-3.91-.5A5.07 5.07 0 0 0 4 4.77 5.44 5.44 0 0 0 3.5 14c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 18.94 19"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://tiktok.com/@fathan"
+                target="_blank"
+                class="social-link"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather"
+                >
+                  <path
+                    d="M16 0.1c-1.3-0.1-2.6 0.1-3.9 0.6c-1.4 0.5-2.6 1.2-3.8 2.2c-1.1 1-2.1 2.2-2.9 3.5c-0.8 1.3-1.4 2.7-1.8 4.2c-0.4 1.5-0.5 3-0.2 4.5c0.3 1.5 1 2.9 2.1 4.2c1.1 1.3 2.4 2.4 3.9 3.2c1.5 0.8 3.1 1.3 4.8 1.4c1.7 0.1 3.4-0.1 5.1-0.6c1.7-0.5 3.3-1.4 4.8-2.5c0.1-0.1 0.1-0.2 0.2-0.3c0.1-0.1 0.1-0.2 0.1-0.3s0-0.2-0.1-0.3c-0.1-0.1-0.1-0.2-0.2-0.3c-0.1-0.1-0.3-0.2-0.5-0.2c-0.2-0.1-0.4-0.1-0.6-0.1c-0.2 0-0.4 0-0.6 0.1c-1.2 0.4-2.5 0.6-3.8 0.5c-1.3-0.1-2.6-0.6-3.8-1.4c-1.2-0.8-2.2-1.8-3-3c-0.8-1.2-1.3-2.6-1.5-4c-0.2-1.4-0.1-2.8 0.4-4.2c0.4-1.4 1-2.8 2-4c0.9-1.2 2-2.3 3.3-3.1c1.2-0.8 2.7-1.3 4.1-1.4c1.5-0.1 2.9-0.1 4.3 0.2c1.4 0.3 2.8 0.9 4.1 1.8c0.1 0.1 0.2 0.2 0.3 0.3c0.1 0.1 0.2 0.2 0.2 0.4c0 0.1-0.1 0.3-0.2 0.4c-0.1 0.1-0.2 0.2-0.3 0.3c-0.1 0.1-0.3 0.1-0.5 0.1c-0.2 0-0.4 0-0.6-0.1c-1.4-0.4-2.8-0.6-4.2-0.5c-1.4 0.1-2.8 0.6-4.1 1.4c-1.3 0.8-2.4 1.8-3.4 3c-0.9 1.1-1.5 2.5-1.7 3.9c-0.2 1.4-0.1 2.8 0.4 4.2c0.4 1.3 1 2.7 2.1 3.9c1 1.2 2.3 2.2 3.8 2.9c1.4 0.7 3 1.1 4.6 1.1c1.6 0 3.2-0.3 4.7-1c1.5-0.7 2.9-1.6 4.1-2.8c-0.1-0.1-0.2-0.2-0.2-0.3c-0.1-0.1-0.1-0.2-0.1-0.4c-0.1-0.1-0.2-0.2-0.3-0.3c-0.1-0.1-0.2-0.1-0.4-0.1c-0.1 0-0.3 0-0.4 0.1c-1.2 0.3-2.5 0.4-3.8 0.2c-1.3-0.2-2.6-0.7-3.8-1.5c-1.2-0.8-2.2-1.8-3-3c-0.8-1.2-1.3-2.6-1.5-4c-0.2-1.4-0.1-2.8 0.4-4.2c0.4 1.3 1 2.7 2.1 3.9c1 1.2 2.3 2.2 3.8 2.9c1.4 0.7 3 1.1 4.6 1.1c1.6 0 3.2-0.3 4.7-1c1.5-0.7 2.9-1.6 4.1-2.8"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-mail text-primary me-2"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a
+                href="mailto:Fathanghani.itxpro@gmail.com"
+                class="social-link text-muted text-decoration-none"
+                >Fathanghani.itxpro@gmail.com</a
+              >
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <div class="text-center small text-muted">
+          <p class="mb-0">
+            &copy; 2025 M. Fathan Ghani Hidayat — All rights reserved.
           </p>
-          <a href="index.html#projects" class="btn btn-primary mt-3">
-            ← Kembali ke Proyek
-          </a>
         </div>
-      </div>
-    </section>
-
-    <section class="container py-5">
-      <div class="row align-items-center">
-        <!-- Gambar di kiri -->
-        <div class="col-md-5 mb-4 mb-md-0">
-          <img
-            src="gambar/Screenshot 2025-09-14 225735.png"
-            alt="Bherindo Motor"
-            class="img-fluid rounded shadow"
-          />
-        </div>
-        <!-- Deskripsi di kanan -->
-        <div class="col-md-7">
-       
-          <p class="fs-5">
-          lalu disini ada form untuk menambah kan data <b>Motor</b> atau <b>Mobil</b> yang akan di tampilkan di home agar bisa dilihat oleh user  
-          </p>
-          <a href="index.html#projects" class="btn btn-primary mt-3">
-            ← Kembali ke Proyek
-          </a>
-        </div>
-      </div>
-    </section>
-
-     <section class="container py-5">
-      <div class="row align-items-center">
-        <!-- Gambar di kiri -->
-        <div class="col-md-5 mb-4 mb-md-0">
-          <img
-            src="gambar/Screenshot 2025-09-14 222921.png"
-            alt="Bherindo Motor"
-            class="img-fluid rounded shadow"
-          />
-        </div>
-        <!-- Deskripsi di kanan -->
-        <div class="col-md-7">
-       
-          <p class="fs-5">
-          lalu disini ada form untuk menambah kan data <b>Motor</b> atau <b>Mobil</b> yang akan di tampilkan di home agar bisa dilihat oleh user  
-          </p>
-          <a href="index.html#projects" class="btn btn-primary mt-3">
-            ← Kembali ke Proyek
-          </a>
-        </div>
-      </div>
-    </section>
-
-      
-
-
-    <!-- Footer -->
-    <footer class="bg-white dark:bg-gray-900 mt-4">
-      <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 text-center">
-        <p class="text-gray-500">
-          © 2025 Muhammad Fathan Ghani Hidayat. All Rights Reserved.
-        </p>
       </div>
     </footer>
 
+    <a
+      href="#top"
+      id="btn-back-to-top"
+      class="btn btn-primary btn-sm rounded-circle shadow-lg"
+      style="opacity: 0"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-arrow-up"
+      >
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    </a>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800, once: true });
+
+      const backToTopBtn = document.getElementById("btn-back-to-top");
+      const scrollThreshold = 100;
+
+      const handleScroll = () => {
+        if (
+          document.body.scrollTop > scrollThreshold ||
+          document.documentElement.scrollTop > scrollThreshold
+        ) {
+          backToTopBtn.style.display = "block";
+          setTimeout(() => {
+            backToTopBtn.style.opacity = "1";
+          }, 10);
+        } else {
+          backToTopBtn.style.opacity = "0";
+          setTimeout(() => {
+            backToTopBtn.style.display = "none";
+          }, 300);
+        }
+      };
+
+      window.onscroll = handleScroll;
+
+      backToTopBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
   </body>
 </html>
